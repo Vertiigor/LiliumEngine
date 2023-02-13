@@ -32,4 +32,10 @@ The project was inspired by the more popular Renpy engine and provides high-leve
 
 ## 🛤 Supported platforms:
 
-- LATER
+### Platforms:
+
+| Operating system: | Is it supported: |
+|-----|-----------|
+|Windows| ✔️ |
+|Linux|❔|
+|Mac|❔|
