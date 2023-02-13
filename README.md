@@ -4,7 +4,19 @@
 
 ## 🧐 What is it?
 
-- LATER
+### LiliumEngine is a game engine for creating projects in the genre of "visual novels".
+The project was inspired by the more popular Renpy engine and provides high-level functions for creating a game:
+- Text output in the form of replicas of characters and the author.
+- Playing audio files in formats: `.wav`, `.ogg` and `.flac`.
+- Basic UI elements:
+  - Buttons
+  - Checkboxes
+  - Images
+  - Text
+- Easy transition between game scenes and adding your own.
+- The ability to develop on the main ones .Net languages: `C#`, `F#`, `Visual Basic`.
+
+### This engine is well suited for simple games, game jams, prototyping, training novice developers or schoolchildren.
 
 ## 🏁 Get Started:
 
