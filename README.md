@@ -35,7 +35,7 @@ The project was inspired by the more popular Renpy engine and provides high-leve
 ### Platforms:
 
 | Operating system: | Is it supported: |
-|-----|-----------|
-|Windows| ✔️ |
-|Linux|❔|
-|Mac|❔|
+|-------------------|------------------|
+|Windows            | ✔️              |
+|Linux              |❔                |
+|Mac                |❔                |
