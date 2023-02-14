@@ -75,7 +75,7 @@ namespace LiliumEngine
         {
             foreach (var element in elements)
             {
-                Scenes[sceneName].UIelements.Add(element);
+                Scenes[sceneName].UIelementsToAdd.Add(element);
             }
         }
 
