@@ -39,7 +39,7 @@ namespace LiliumEngine.UI.Elements
         /// <param name="x">X position.</param>
         /// <param name="y">Y position.</param>
         /// <param name="text">Text to be displayed.</param>
-        /// <param name="color">Text color.</param>
+        /// <param name="color">The color of the displayed text.</param>
         /// <param name="charSize">Size of each character.</param>
         public Label(float x, float y, string text, ColorUI color, uint charSize) : base(x, y)
         {

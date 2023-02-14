@@ -39,8 +39,10 @@ namespace LiliumEngine.UI.Elements
         /// <param name="x">X position.</param>
         /// <param name="y">Y position.</param>
         /// <param name="text">Text displayed to the right of the checkmark.</param>
-        /// <param name="value">Bool value.</param>
-        public CheckBox(float x, float y, string text, bool value = false) : base(x, y)
+        /// <param name="color">The color of the displayed text.</param>
+        /// <param name="charSize">Size of each character.</param>
+        /// <param name="value">Bool value. Equals False by default.</param>
+        public CheckBox(float x, float y, string text, ColorUI color, uint charSize, bool value = false) : base(x, y)
         {
             this.border = new RectangleShape(new Vector2f(50, 50));
             this.border.FillColor = new Color(0, 0, 0, 0);
@@ -53,11 +55,12 @@ namespace LiliumEngine.UI.Elements
             this.isChecked.Position = new Vector2f(x, y);
 
             this.text = text;
-
+            
             Value = value;
 
-            Text = new Text(text, Game.GameFont);
+            Text = new Text(text, Game.GameFont, charSize);
             Text.Position = new Vector2f(Origin.X + 60, Origin.Y);
+            Text.FillColor = new Color(color.R, color.G, color.B, color.A);
 
             this.size = new Vector2f(text.Length * Text.CharacterSize + Text.CharacterSize, Text.CharacterSize * 2); // determine button size
 
