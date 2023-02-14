@@ -43,7 +43,7 @@ namespace LiliumEngine.Audio
         /// <param name="path">Music file path.</param>
         public void PlayMusic(string path)
         {
-            targetGame.Scenes["MainScene"].Dialog.Actions.Enqueue(() =>
+            targetGame.Scenes["Main"].Dialog.Actions.Enqueue(() =>
             {
                 currentMusic = new Music(path);
                 currentMusic.Play();
@@ -55,7 +55,7 @@ namespace LiliumEngine.Audio
         /// </summary>
         public void StopMusic()
         {
-            targetGame.Scenes["MainScene"].Dialog.Actions.Enqueue(() =>
+            targetGame.Scenes["Main"].Dialog.Actions.Enqueue(() =>
             {
                 currentMusic?.Stop();
             });
