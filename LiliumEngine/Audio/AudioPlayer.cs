@@ -9,7 +9,25 @@ namespace LiliumEngine.Audio
     {
         private static Music? currentMusic;
         private Game targetGame;
+        
+        /// <summary>
+        /// Volume value from 0 (muted) to 100 (maximum value).
+        /// </summary>
+        public int Volume
+        {
+            get => (int)currentMusic.Volume;
+            set => currentMusic.Volume = value <= 100 && value >= 0 ? value : throw new ArgumentException("Value must be between 0 and 100.");
+        }
 
+        /// <summary>
+        /// A flag that determines whether the music will be played again after the end.
+        /// </summary>
+        public bool Loop
+        {
+            get => currentMusic.Loop;
+            set => currentMusic.Loop = value;
+        }
+        
         /// <summary>
         /// Initializes an audio player.
         /// </summary>
