@@ -65,6 +65,7 @@ namespace LiliumEngine.UI.Elements
             this.size = new Vector2f(text.Length * Text.CharacterSize + Text.CharacterSize, Text.CharacterSize * 2); // determine button size
 
             this.area = new RectangleShape(size);
+            this.area.Position = new Vector2f(Origin.X + 60, Origin.Y);
         }
         public override void Update(RenderTarget target)
         {
