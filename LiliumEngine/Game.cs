@@ -67,7 +67,7 @@ namespace LiliumEngine
             Scenes = new Dictionary<string, Scene>();
 
             Scene menu = new Scene(this, "Menu", Array.Empty<ElementUI>());
-            Scene main = new Scene(this, "MainScene", Array.Empty<ElementUI>());
+            Scene main = new Scene(this, "Main", Array.Empty<ElementUI>());
             CurrentScene = menu;
         }
 

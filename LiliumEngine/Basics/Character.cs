@@ -25,7 +25,7 @@
         /// <param name="message">Character's message.</param>
         public void Say(string message)
         {
-            targetGame.Scenes["MainScene"].Dialog.Actions.Enqueue(() =>
+            targetGame.Scenes["Main"].Dialog.Actions.Enqueue(() =>
             {
                 string temp = $"{name}: \"";
                 message += "\"";
@@ -33,7 +33,7 @@
                 foreach (var symbol in message)
                 {
                     temp += symbol;
-                    targetGame.Scenes["MainScene"].Text.Text = temp;
+                    targetGame.Scenes["Main"].Text.Text = temp;
                     Thread.Sleep(30);
                 }
             });

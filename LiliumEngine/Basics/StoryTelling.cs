@@ -1,4 +1,5 @@
 ﻿using LiliumEngine.UI.Elements;
+using System.IO;
 
 namespace LiliumEngine.Basics
 {
@@ -25,7 +26,7 @@ namespace LiliumEngine.Basics
         /// <param name="actions">Lambda functions refer respectively to variants.</param>
         public void ShowMenu(string options, params Action[] actions)
         {
-            targetGame.Scenes["MainScene"].Dialog.Actions.Enqueue(() =>
+            targetGame.Scenes["Main"].Dialog.Actions.Enqueue(() =>
             {
                 var optionButtons = new List<Button>();
                 var labels = options.Split('|');
@@ -38,28 +39,28 @@ namespace LiliumEngine.Basics
                     {
                         var newActions = new Queue<Action>();
 
-                        while (targetGame.Scenes["MainScene"].Dialog.Actions.Count > 0)
+                        while (targetGame.Scenes["Main"].Dialog.Actions.Count > 0)
                         {
-                            newActions.Enqueue(targetGame.Scenes["MainScene"].Dialog.Actions.Dequeue());
+                            newActions.Enqueue(targetGame.Scenes["Main"].Dialog.Actions.Dequeue());
                         }
 
-                        targetGame.Scenes["MainScene"].Dialog.Actions.Clear();
+                        targetGame.Scenes["Main"].Dialog.Actions.Clear();
 
                         action?.Invoke();
 
                         while (newActions.Count > 0)
                         {
-                            targetGame.Scenes["MainScene"].Dialog.Actions.Enqueue(newActions.Dequeue());
+                            targetGame.Scenes["Main"].Dialog.Actions.Enqueue(newActions.Dequeue());
                         }
 
                         foreach (var button in optionButtons)
                         {
-                            targetGame.Scenes["MainScene"].UIelementsToRemove.Add(button);
+                            targetGame.Scenes["Main"].UIelementsToRemove.Add(button);
                         }
 
-                        targetGame.Scenes["MainScene"].Dialog.State = Dialog.DialogState.Running;
+                        targetGame.Scenes["Main"].Dialog.State = Dialog.DialogState.Running;
 
-                        targetGame.Scenes["MainScene"].Dialog.Actions.Dequeue()?.Invoke();
+                        targetGame.Scenes["Main"].Dialog.Actions.Dequeue()?.Invoke();
                     };
 
                     optionButtons.Add(optionButton);
@@ -81,14 +82,14 @@ namespace LiliumEngine.Basics
         /// <param name="message">Text that will be shown.</param>
         public void Write(string message)
         {
-            targetGame.Scenes["MainScene"].Dialog.Actions.Enqueue(() =>
+            targetGame.Scenes["Main"].Dialog.Actions.Enqueue(() =>
             {
                 string temp = string.Empty;
 
                 foreach (var symbol in message)
                 {
                     temp += symbol;
-                    targetGame.Scenes["MainScene"].Text.Text = temp;
+                    targetGame.Scenes["Main"].Text.Text = temp;
                     Thread.Sleep(40);
                 }
             });
@@ -100,7 +101,10 @@ namespace LiliumEngine.Basics
         /// <param name="seconds">The number of seconds the dialog will be paused for.</param>
         public void WaitFor(uint seconds)
         {
-            Thread.Sleep((int)seconds * 1000);
+            targetGame.Scenes["Main"].Dialog.Actions.Enqueue(() =>
+            {
+                Thread.Sleep((int)seconds * 1000);
+            });
         }
 
         /// <summary>
@@ -109,9 +113,9 @@ namespace LiliumEngine.Basics
         /// <param name="path">Illustration file path.</param>
         public void LoadIllustration(string path)
         {
-            targetGame.Scenes["MainScene"].Dialog.Actions.Enqueue(() =>
+            targetGame.Scenes["Main"].Dialog.Actions.Enqueue(() =>
             {
-                targetGame.Scenes["MainScene"].Illustration.Image = path;
+                targetGame.Scenes["Main"].Illustration.Image = path;
             });
         }
     }
