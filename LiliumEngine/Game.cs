@@ -71,6 +71,14 @@ namespace LiliumEngine
             CurrentScene = menu;
         }
 
+        public void AddElementsUI(string sceneName, params ElementUI[] elements)
+        {
+            foreach (var element in elements)
+            {
+                Scenes[sceneName].UIelements.Add(element);
+            }
+        }
+
         /// <summary>
         /// Starts game session.
         /// Clicking the Esc button will close the window.
