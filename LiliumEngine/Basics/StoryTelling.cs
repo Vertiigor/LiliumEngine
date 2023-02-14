@@ -69,10 +69,10 @@ namespace LiliumEngine.Basics
 
                 foreach (var btn in optionButtons)
                 {
-                    targetGame.Scenes["MainScene"].UIelementsToAdd.Add(btn);
+                    targetGame.Scenes["Main"].UIelementsToAdd.Add(btn);
                 }
 
-                targetGame.Scenes["MainScene"].Dialog.State = Dialog.DialogState.Stopped;
+                targetGame.Scenes["Main"].Dialog.State = Dialog.DialogState.Stopped;
             });
         }
 
