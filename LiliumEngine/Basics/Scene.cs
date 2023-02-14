@@ -63,8 +63,6 @@ namespace LiliumEngine.Basics
             this.UIelements = new List<ElementUI>(elemnts) { Text, Illustration };
             this.UIelementsToRemove = new List<ElementUI>();
             this.UIelementsToAdd = new List<ElementUI>();
-
-            game?.Scenes?.Add(name, this);
         }
 
         public void Update(RenderTarget target)
