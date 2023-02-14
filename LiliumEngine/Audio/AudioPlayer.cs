@@ -23,6 +23,8 @@ namespace LiliumEngine.Audio
         /// Plays msuic.Supports formats: WAV, OGG/Vorbis and FLAC.
         /// </summary>
         /// <param name="path">Music file path.</param>
+        /// <param name="volume">Music volume value.</param>
+        /// <param name="looped">Is it looped.</param>
         public void PlayMusic(string path, int volume, bool looped=false)
         {
             targetGame.Scenes["Main"].Dialog.Actions.Enqueue(() =>

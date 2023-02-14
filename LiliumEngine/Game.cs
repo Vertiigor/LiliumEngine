@@ -71,6 +71,11 @@ namespace LiliumEngine
             CurrentScene = menu;
         }
 
+        /// <summary>
+        /// Adds a list of UI elements to the specified scene.
+        /// </summary>
+        /// <param name="sceneName">The scene to which the elements are added.</param>
+        /// <param name="elements">UI elements list to add.</param>
         public void AddElementsUI(string sceneName, params ElementUI[] elements)
         {
             foreach (var element in elements)
