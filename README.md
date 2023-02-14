@@ -28,7 +28,9 @@ The project was inspired by the more popular Renpy engine and provides high-leve
 
 ## ✨ Examples:
 
-You can find usage examples [here](https://github.com/Vertiigor/LiliumEngineExamples)
+Preferred language - `F#`.
+
+You can find usage examples [here](https://github.com/Vertiigor/LiliumEngineExamples).
 
 ## 🛤 Supported platforms:
 
