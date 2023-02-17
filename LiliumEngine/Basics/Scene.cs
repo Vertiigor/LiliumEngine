@@ -60,7 +60,7 @@ namespace LiliumEngine.Basics
 
             this.name = name;
 
-            this.UIelements = new List<ElementUI>(elemnts) { Text, Illustration };
+            this.UIelements = new List<ElementUI>(elemnts) { Illustration };
             this.UIelementsToRemove = new List<ElementUI>();
             this.UIelementsToAdd = new List<ElementUI>();
 
@@ -73,6 +73,8 @@ namespace LiliumEngine.Basics
             {
                 dialogUpdateThread.Start();
             }
+
+            Text.Update(target);
 
             foreach (ElementUI element in UIelements)
             {
@@ -98,6 +100,8 @@ namespace LiliumEngine.Basics
             {
                 target.Draw(element);
             }
+
+            target.Draw(Text);
         }
     }
 }
