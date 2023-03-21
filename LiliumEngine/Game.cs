@@ -17,6 +17,11 @@ namespace LiliumEngine
         private ContextSettings contextSettings;
 
         /// <summary>
+        /// The color that the window will be filled with (updated).
+        /// </summary>
+        public ColorUI ClearColor { get; set; }
+
+        /// <summary>
         /// The window where all game content will be displayed. Expands to full screen.
         /// </summary>
         public RenderWindow Window { get; set; }
@@ -52,6 +57,8 @@ namespace LiliumEngine
         public Game(string title, string fontPath, ColorUI color)
         {
             MainColor = color;
+
+            ClearColor = new ColorUI(0, 0, 0);
 
             this.timer = new Basics.Timer(16.6f);
 
@@ -96,7 +103,7 @@ namespace LiliumEngine
             {
                 Window.DispatchEvents();
 
-                Window.Clear(SFML.Graphics.Color.Black);
+                Window.Clear(new Color(ClearColor.R, ClearColor.G, ClearColor.B, ClearColor.G));
 
                 if (Keyboard.IsKeyPressed(Keyboard.Key.Escape))
                 {
