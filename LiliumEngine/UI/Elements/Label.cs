@@ -49,6 +49,23 @@ namespace LiliumEngine.UI.Elements
             Text = text;
         }
 
+        /// <summary>
+        /// Constructor that sets the basic necessary parameters for the Label and initialize it.
+        /// </summary>
+        /// <param name="x">X position.</param>
+        /// <param name="y">Y position.</param>
+        /// <param name="text">Text to be displayed.</param>
+        /// <param name="color">The color of the displayed text.</param>
+        /// <param name="charSize">Size of each character.</param>
+        /// <param name="fontPath">Path to the font file that will be applied to this UI object.</param>
+        public Label(float x, float y, string text, ColorUI color, uint charSize, string fontPath) : base(x, y)
+        {
+            this.CharSize = charSize;
+            this.font = new Font(fontPath);
+            this.color = new Color(color.R, color.G, color.B, color.A);
+            Text = text;
+        }
+
         public override void Draw(RenderTarget target, RenderStates states)
         {
             target.Draw(text);

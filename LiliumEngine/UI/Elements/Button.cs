@@ -42,6 +42,32 @@ namespace LiliumEngine.UI.Elements
             this.originalColor = color;
         }
 
+        /// <summary>
+        /// Constructor that sets the basic necessary parameters for the Button and initialize it.
+        /// </summary>
+        /// <param name="x">X position.</param>
+        /// <param name="y">Y position.</param>
+        /// <param name="text">Text of button.</param>
+        /// <param name="color">Color of button.</param>
+        /// <param name="charSize">Size of each character.</param>
+        /// <param name="fontPath">Path to the font file that will be applied to this UI object.</param>
+        public Button(float x, float y, string text, ColorUI color, uint charSize, string fontPath) : base(x, y)
+        {
+            Text = new Text(text, new Font(fontPath), charSize);
+            Text.FillColor = new Color(color.R, color.G, color.B, color.A);
+            Text.Position = new Vector2f(x + Text.CharacterSize, y + Text.CharacterSize / 4); // align the text in the middle of the button
+
+            this.size = new Vector2f(text.Length * Text.CharacterSize + Text.CharacterSize, Text.CharacterSize * 2); // determine button size
+
+            this.area = new RectangleShape(size);
+            this.area.OutlineThickness = 4;
+            this.area.OutlineColor = new Color(color.R, color.G, color.B, color.A);
+            this.area.Position = new Vector2f(x, y);
+            this.area.FillColor = new Color(0, 0, 0, 0);
+
+            this.originalColor = color;
+        }
+
         public override void Update(RenderTarget target)
         {
             if (Mouse.IsButtonPressed(Mouse.Button.Left) && area.GetGlobalBounds().Contains(Mouse.GetPosition((Window)target).X, Mouse.GetPosition((Window)target).Y))
