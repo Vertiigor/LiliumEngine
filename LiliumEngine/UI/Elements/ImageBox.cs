@@ -1,4 +1,5 @@
 ﻿using SFML.Graphics;
+using System.Security.Cryptography.X509Certificates;
 
 namespace LiliumEngine.UI.Elements
 {
@@ -7,9 +8,13 @@ namespace LiliumEngine.UI.Elements
     /// </summary>
     public class ImageBox : ElementUI
     {
-        private string? imagePath;
         private Texture? texture;
         private Sprite? sprite;
+
+        /// <summary>
+        /// Path to the file containing the image.
+        /// </summary>
+        public string? ImagePath { get; private set; }
 
         /// <summary>
         /// A property that accepts and returns a path to a file.
@@ -17,13 +22,13 @@ namespace LiliumEngine.UI.Elements
         /// </summary>
         public string? Image
         {
-            get => imagePath;
+            get => ImagePath;
             set
             {
                 texture = new Texture(value);
                 sprite = new Sprite(texture);
                 sprite.Position = new SFML.System.Vector2f(Origin.X, Origin.Y);
-                imagePath = value;
+                ImagePath = value;
             }
         }
 
@@ -52,6 +57,22 @@ namespace LiliumEngine.UI.Elements
         public void LoadFrom(string path)
         {
             Image = path;
+        }
+
+        internal void LoadFromSfmlImage(Image image, string imagePath)
+        {
+            if (texture != null)
+            {
+                texture.Update(image);
+                sprite.Texture = texture;
+                ImagePath = imagePath;
+            }
+            else
+            {
+                texture = new Texture(image);
+                sprite = new Sprite(texture);
+                ImagePath = imagePath;
+            }
         }
 
         public override void Draw(RenderTarget target, RenderStates states)

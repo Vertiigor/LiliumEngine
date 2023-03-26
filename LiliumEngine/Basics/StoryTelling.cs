@@ -1,4 +1,5 @@
 ﻿using LiliumEngine.UI.Elements;
+using SFML.Graphics;
 using System.IO;
 
 namespace LiliumEngine.Basics
@@ -107,15 +108,58 @@ namespace LiliumEngine.Basics
             });
         }
 
+        // further shitcode...
         /// <summary>
         /// Loads an illustration on scene.
         /// </summary>
         /// <param name="path">Illustration file path.</param>
         public void LoadIllustration(string path)
         {
+            var sourceTexture = new Texture(path);
+
+            var width = sourceTexture.Size.X; // width of the new image
+            var height = sourceTexture.Size.Y;// height of the new image
+
+            Image resultImage = new Image(width, height); // new image, that will be shown
+            var textureAsImage = sourceTexture.CopyToImage(); //for optimization (maybe)
+
+            var pixels = new Color[width, height];
+
+            // set the pixels of the new image
+            for (int x = 0; x < width; x++)
+            {
+                for (int y = 0; y < height; y++)
+                {
+                    pixels.SetValue(textureAsImage.GetPixel((uint)x, (uint)y), x, y);
+                }
+            }
             targetGame.Scenes["Main"].Dialog.Actions.Enqueue(() =>
             {
-                targetGame.Scenes["Main"].Illustration.Image = path;
+                //if an image is already shown on the stage, then we collapse it
+                if (targetGame.Scenes["Main"].Illustration.ImagePath != null)
+                {
+                    var shownTexture = new Texture(targetGame.Scenes["Main"].Illustration.ImagePath);
+                    resultImage = shownTexture.CopyToImage();
+                    for (int y = (int)height - 1; y >= 0; y--)
+                    {
+                        for (int x = (int)width - 1; x >= 0; x--)
+                        {
+                            resultImage.SetPixel((uint)x, (uint)y, new Color(0, 0, 0, 0));
+                        }
+                        targetGame.Scenes["Main"].Illustration.LoadFromSfmlImage(resultImage, path);
+                    }
+                    Thread.Sleep(1000);
+                }
+
+                //expanding the image
+                for (int y = 0; y < height; y++)
+                {
+                    for(int x = 0; x < width; x++)
+                    {
+                        resultImage.SetPixel((uint)x, (uint)y, pixels[x, y]);
+                    }
+                    targetGame.Scenes["Main"].Illustration.LoadFromSfmlImage(resultImage, path);
+                }
             });
         }
     }
