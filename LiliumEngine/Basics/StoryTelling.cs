@@ -131,6 +131,7 @@ namespace LiliumEngine.Basics
                 for (int y = 0; y < height; y++)
                 {
                     pixels.SetValue(textureAsImage.GetPixel((uint)x, (uint)y), x, y);
+                    resultImage.SetPixel((uint)x, (uint)y, new Color(0, 0, 0, 0));
                 }
             }
             targetGame.Scenes["Main"].Dialog.Actions.Enqueue(() =>
