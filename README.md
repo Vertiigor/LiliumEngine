@@ -20,7 +20,23 @@ The project was inspired by the more popular Renpy engine and provides high-leve
 
 ## 🏁 Get Started:
 
-- LATER
+- ### To get started, download the .dll file of the library for this engine. It's in the releases section. This guide was made at the time of the release of 1.0.4.
+![](https://github.com/Vertiigor/LiliumEngine/blob/master/InstallSteps/1.png)
+
+- ### Next, transfer the downloaded file to the folder where the .exe file is stored. As shown in the example.
+![](https://github.com/Vertiigor/LiliumEngine/blob/master/InstallSteps/2.png)
+
+- ### Next, add a link to the transferred .dll file in your project's dependencies.
+![](https://github.com/Vertiigor/LiliumEngine/blob/master/InstallSteps/3.png)
+
+- ### In order for the engine to work, we also need to include several third-party libraries. Go to the NuGet package manager.
+![](https://github.com/Vertiigor/LiliumEngine/blob/master/InstallSteps/4.png)
+
+- ### The last step is to do the actions shown in the picture below:
+![](https://github.com/Vertiigor/LiliumEngine/blob/master/InstallSteps/5.png)
+
+### Now you can use all the features of the engine. 🥳🥳🥳
+### I recommend looking at the [examples](https://github.com/Vertiigor/LiliumEngineExamples).
 
 ##  📄 Documentation:
 
