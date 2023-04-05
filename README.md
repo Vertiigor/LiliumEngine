@@ -40,7 +40,7 @@ The project was inspired by the more popular Renpy engine and provides high-leve
 
 ##  📄 Documentation:
 
-- LATER
+- LATER (maybe)
 
 ## ✨ Examples:
 
