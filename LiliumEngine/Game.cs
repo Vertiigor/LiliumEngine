@@ -54,7 +54,7 @@ namespace LiliumEngine
         /// <param name="title">Name of the game.</param>
         /// <param name="fontPath">Path as font file.</param>
         /// <param name="color">Game's main color.</param>
-        public Game(string title, string fontPath, ColorUI color)
+        public Game(string title, string fontPath, ColorUI color, bool fullscreen = true)
         {
             MainColor = color;
 
@@ -66,7 +66,7 @@ namespace LiliumEngine
 
             GameFont = new Font(fontPath);
 
-            Window = new RenderWindow(new SFML.Window.VideoMode(WindowWidth, WindowHeight), title, SFML.Window.Styles.Fullscreen, contextSettings);
+            Window = new RenderWindow(new SFML.Window.VideoMode(WindowWidth, WindowHeight), title, fullscreen == true ? SFML.Window.Styles.Fullscreen : Styles.Default, contextSettings);
 
             Window.Closed += Close;
             Window.SetKeyRepeatEnabled(false);
