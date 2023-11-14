@@ -108,6 +108,15 @@ namespace LiliumEngine.Basics
             });
         }
 
+        /// <summary>
+        /// Allows you to add your own functions to the action queue.
+        /// </summary>
+        /// <param name="action">Executable function.</param>
+        public void Do(Action action) 
+        {
+            targetGame.Scenes["Main"].Dialog.Actions.Enqueue(action);
+        }
+
         // further shitcode...
         /// <summary>
         /// Loads an illustration on scene.
